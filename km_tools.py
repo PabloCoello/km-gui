@@ -59,7 +59,7 @@ class km():
         ax.set_xlabel('comp_1', fontsize=15)
         ax.set_ylabel('comp_2', fontsize=15)
         ax.set_title('PCA', fontsize=15)
-        color_theme = np.array(['blue', 'orange', 'green'])
+        color_theme = np.array(['blue', 'orange', 'green', 'purple', 'brown','red', 'yellow', 'grey', 'black'])
         ax.scatter(x=pca_nombres_x.comp_1, y=pca_nombres_x.comp_2,
                    c=color_theme[pca_nombres_x.km_labels], s=50)
         plt.show()
