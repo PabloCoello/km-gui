@@ -31,7 +31,7 @@ while True:
     if event == sg.WINDOW_CLOSED or event == 'salir':
         break
     elif event == "Submit":
-        data = pd.read_excel(values["-IN-"])
+        data = pd.read_excel(values["-IN-"], engine='openpyxl')
         window['-VARNAMES-'].update(data.columns)
     elif event == 'Set features':
         res = km(data, values['-VARNAMES-'])
