@@ -1,3 +1,5 @@
+from ctypes import alignment
+from curses import color_content
 from tkinter.constants import TRUE
 import PySimpleGUI as sg
 import os
@@ -7,22 +9,28 @@ import pandas as pd
 
 def get_layout():
     return [
-        [sg.Text('Kmeans Tool', font=("Helvetica", 15), size=(20, 1), text_color='green')],
-        [sg.T("")], [sg.Text("Choose a file: "), sg.Input(), sg.FileBrowse(key='-IN-')],
-        [sg.Button("Submit")],
-        [sg.Text('Select features for clusterization', font=("Helvetica", 15), size=(40, 1))],
-        [sg.Listbox(values=[], size=(30, 5 + 1),enable_events=True, key='-VARNAMES-', select_mode='extended')],
-        [sg.Button("Set features")],
+        [sg.Text('KMEANS TOOL', font=("Helvetica", 20), text_color='black')],
+        [sg.T("")],
+        [sg.Text("Choose a file: ", font=("Helvetica", 15))],
+        [sg.Input(size=(41)), sg.FileBrowse(key='-IN-', font=("Helvetica", 15), size=10)],
+        [sg.Button('Submit', font=("Helvetica", 15), size=(10))],
+        [sg.T("")],
+        [sg.Text('Select features for clusterization:', font=("Helvetica", 15))],
+        [sg.Listbox(values=[], size=(56, 5 + 1),enable_events=True, key='-VARNAMES-', select_mode='extended')],
+        [sg.Button("Set features", font=("Helvetica", 15), size=10)],
+        [sg.T("")],
         [sg.Canvas(key='-CANVAS1-')],
         [sg.Canvas(key='-CANVAS2-')],
-        [sg.Text("Insert number of clusters"), sg.Input(key='-NCLUST-')],
-        [sg.Text("Insert number of iterations"), sg.Input(key='-NIT-')],
-        [sg.Checkbox('Multiple analysis:', default=False, key="-MULTIPLE-")],
-        [sg.Button("Calculate")],
-        [sg.Button("Save result"), sg.Button("Save centroids"), sg.Button("Show plot")]
+        [sg.Text("Insert number of clusters:  ", font=("Helvetica", 15)), sg.Input(key='-NCLUST-', size=(27, 1))],
+        [sg.Text("Insert number of iterations:", font=("Helvetica", 15)), sg.Input(key='-NIT-', size=(27, 1))],
+        [sg.Checkbox('Multiple analysis:', font=("Helvetica", 15), default=False, key="-MULTIPLE-")],
+        [sg.Button("Calculate", font=("Helvetica", 15), size=10)],
+        [sg.T("")],
+        [sg.T("")],
+        [sg.Button("Save result", font=("Helvetica", 15), size=10), sg.T("     "), sg.Button("Save centroids", font=("Helvetica", 15), size=10), sg.T("     "), sg.Button("Show plot", font=("Helvetica", 15), size=10)]
     ] 
 
-sg.theme('DarkPurple1')
+sg.theme('DarkBlue3')
 
 window = sg.Window(title="km", layout=get_layout(), margins=(100,50))
 
